@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Manna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffafa;
+            background-image: url("https://www.transparenttextures.com/patterns/floral-paper.png");
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            max-width: 420px;
+            padding: 35px;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(214, 128, 128, 0.15);
+            border: 1px solid #f9ecec;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            color: #d68080;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .flower-icon {
+            font-size: 30px;
+            color: #d68080;
+            margin-bottom: 10px;
+        }
+
+        .intro-p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #5a5a5a;
+            margin-bottom: 25px;
+        }
+
+        .shayari-box {
+            background: #fff8f8;
+            padding: 30px 20px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border: 1px solid #fce4e4;
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #b56565;
+            position: relative;
+        }
+
+        .shayari-box::before { content: '🌸'; position: absolute; top: -10px; left: -10px; font-size: 20px; }
+        .shayari-box::after { content: '🌸'; position: absolute; bottom: -10px; right: -10px; font-size: 20px; }
+
+        .message-p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #d68080;
+            font-weight: 600;
+            border-bottom: 1px dashed #d68080;
+        }
+
+        .footer-sig {
+            margin-top: 35px;
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 24px;
+            color: #d68080;
+        }
+
+        /* Interactive Buttons at the Bottom */
+        .love-actions {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            border: 1px solid #d68080;
+            background: transparent;
+            color: #d68080;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #d68080;
+            color: white;
+            box-shadow: 0 5px 15px rgba(214, 128, 128, 0.3);
+        }
+
+        #dynamic-msg {
+            margin-top: 20px;
+            font-weight: 600;
+            color: #d68080;
+            min-height: 24px;
+            font-size: 16px;
+            font-family: 'Lora', serif;
+            font-style: italic;
+        }
+
+        #hug-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 150px;
+            z-index: 1000;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        #hug-overlay.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hug-overlay">🫂</div>
+
+    <div class="container">
+        <div class="flower-icon">🌸 🌷 🌸</div>
+        <h1>Hi Manna,</h1>
+        <p class="intro-p">I wanted to make something special just for you. You are always my priority. ✨</p>
+
+        <div class="shayari-box">
+            Tujhe khone se zyada, tujhe udaas dekhne se darr lagta hai,<br>
+            Tu jaisi bhi hai, tere bina sab kuch adhura lagta hai.<br>
+            Main sab chorr sakta hoon bas teri ek hasi ki khatir,<br>
+            Kyuki tera muskurana hi toh mujhe jaan deta hai.
+        </div>
+
+        <p class="message-p">
+            I really wanted to tell you this because I mean it—<br>
+            <span class="highlight">you’re perfect just the way you are.</span> 
+        </p>
+
+        <p class="message-p">
+            Just know that <span class="highlight">you’re always going to be my priority.</span> I’m ready to drop anything else if you need me, because I’ve always got your back.
+        </p>
+
+        <div class="footer-sig">— Jatin</div>
+
+        <div class="love-actions">
+            <button class="btn" onclick="visualHug()">Get a Hug 🤗</button>
+            <button class="btn" onclick="visualKiss()">Get a Kiss 💋</button>
+        </div>
+
+        <div id="dynamic-msg"></div>
+
+        <div style="margin-top: 25px; font-size: 18px;">🌸 • 🌷 • 🌸</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        const msgArea = document.getElementById('dynamic-msg');
+
+        function visualHug() {
+            msgArea.innerText = "Always there for you beta ❤️";
+            const overlay = document.getElementById('hug-overlay');
+            overlay.classList.add('show');
+            
+            var end = Date.now() + (2 * 1000);
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.8 },
+                    colors: ['#d68080', '#ffcad4']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.8 },
+                    colors: ['#d68080', '#ffcad4']
+                });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
+
+            setTimeout(() => { overlay.classList.remove('show'); }, 2000);
+        }
+
+        function visualKiss() {
+            msgArea.innerText = "Its is only for you wifey (pati ji) 💋";
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { y: 0.7 },
+                colors: ['#ff4d6d', '#d68080', '#ff0000'],
+                shapes: ['circle'],
+                scalar: 1.4
+            });
+        }
+    </script>
+</body>
+</html>
